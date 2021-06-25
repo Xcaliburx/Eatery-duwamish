@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DishRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecipeRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

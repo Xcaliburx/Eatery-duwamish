@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Data\DishData.cs" />
     <Compile Include="Data\DishTypeData.cs" />
+    <Compile Include="Data\RecipeData.cs" />
     <Compile Include="Enum\NotificationType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

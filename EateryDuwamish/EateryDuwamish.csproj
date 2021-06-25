@@ -126,6 +126,7 @@
     <Content Include="lib\datatable-bootstrap\images\sort_both.png" />
     <Content Include="lib\datatable-bootstrap\images\sort_desc.png" />
     <Content Include="lib\datatable-bootstrap\images\sort_desc_disabled.png" />
+    <Content Include="Recipe.aspx" />
     <Content Include="Site.Master" />
     <Content Include="UserControl\NotificationControl.ascx" />
     <Content Include="UserControl\PagingControl.ascx" />
@@ -162,6 +163,13 @@
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recipe.aspx.cs">
+      <DependentUpon>Recipe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Recipe.aspx.designer.cs">
+      <DependentUpon>Recipe.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -213,7 +221,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>60452</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

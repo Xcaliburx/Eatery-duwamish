@@ -43,6 +43,7 @@
     <Compile Include="DishDB.cs" />
     <Compile Include="DishTypeDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecipeDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

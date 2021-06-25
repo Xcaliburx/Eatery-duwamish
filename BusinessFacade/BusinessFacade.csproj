@@ -43,6 +43,7 @@
     <Compile Include="DishSystem.cs" />
     <Compile Include="DishTypeSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecipeSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessRule\BusinessRule.csproj">

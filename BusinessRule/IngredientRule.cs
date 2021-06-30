@@ -10,9 +10,9 @@ using SystemFramework;
 
 namespace BusinessRule
 {
-    public class RecipeRule
+    public class IngredientRule
     {
-        public int InsertUpdateRecipe(RecipeData recipe)
+        public int InsertUpdateIngredient(IngredientData ingredient)
         {
             SqlConnection SqlConn = null;
             SqlTransaction SqlTran = null;
@@ -21,7 +21,7 @@ namespace BusinessRule
                 SqlConn = new SqlConnection(SystemConfigurations.EateryConnectionString);
                 SqlConn.Open();
                 SqlTran = SqlConn.BeginTransaction();
-                int rowsAffected = new RecipeDB().InsertUpdateRecipe(recipe, SqlTran);
+                int rowsAffected = new IngredientDB().InsertUpdateIngredient(ingredient, SqlTran);
                 SqlTran.Commit();
                 SqlConn.Close();
                 return rowsAffected;
@@ -34,7 +34,7 @@ namespace BusinessRule
             }
         }
 
-        public int DeleteRecipes(IEnumerable<int> recipeIDs)
+        public int DeleteIngredients(IEnumerable<int> ingredientIDs)
         {
             SqlConnection SqlConn = null;
             SqlTransaction SqlTran = null;
@@ -43,7 +43,7 @@ namespace BusinessRule
                 SqlConn = new SqlConnection(SystemConfigurations.EateryConnectionString);
                 SqlConn.Open();
                 SqlTran = SqlConn.BeginTransaction();
-                int rowsAffected = new RecipeDB().DeleteRecipes(String.Join(",", recipeIDs), SqlTran);
+                int rowsAffected = new IngredientDB().DeleteIngredients(String.Join(",", ingredientIDs), SqlTran);
                 SqlTran.Commit();
                 SqlConn.Close();
                 return rowsAffected;

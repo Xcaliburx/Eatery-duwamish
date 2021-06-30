@@ -185,6 +185,9 @@
                                             class="sorting_asc text-center">
                                             Price
                                         </th>
+                                        <th colspan="1" rowspan="1" tabindex="0">
+                                            Recipe
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -206,6 +209,10 @@
                                 <td>
                                     <asp:Literal ID="litPrice" runat="server"></asp:Literal>
                                 </td>
+                                <td>
+                                    <asp:Button ID="btnRecipe" UseSubmitBehavior="false" runat="server" OnClick="btnRecipe_Click" Text="Recipe" />
+                                </td>
+                                
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate>

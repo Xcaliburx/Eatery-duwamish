@@ -80,6 +80,7 @@ namespace EateryDuwamish
                 LinkButton lbDishName = (LinkButton)e.Item.FindControl("lbDishName");
                 Literal litDishType = (Literal)e.Item.FindControl("litDishType");
                 Literal litPrice = (Literal)e.Item.FindControl("litPrice");
+                Button btnRecipe = (Button)e.Item.FindControl("btnRecipe");
 
                 lbDishName.Text = dish.DishName;
                 lbDishName.CommandArgument = dish.DishID.ToString();
@@ -87,6 +88,8 @@ namespace EateryDuwamish
                 DishTypeData DishType = new DishTypeSystem().GetDishTypeByID(dish.DishTypeID);
                 litDishType.Text = DishType.DishTypeName;
                 litPrice.Text = dish.DishPrice.ToString();
+
+                btnRecipe.CommandArgument = dish.DishID.ToString();
 
                 CheckBox chkChoose = (CheckBox)e.Item.FindControl("chkChoose");
                 chkChoose.Attributes.Add("data-value", dish.DishID.ToString());
@@ -157,6 +160,12 @@ namespace EateryDuwamish
                 notifDish.Show($"ERROR DELETE DATA: {ex.Message}", NotificationType.Danger);
             }
         }
+        protected void btnRecipe_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int id = int.Parse(btn.CommandArgument);
+            Response.Redirect("./Recipe.aspx?id=" + id);
+        }
         #endregion
 
         #region NOTIFICATION MANAGEMENT
@@ -174,6 +183,5 @@ namespace EateryDuwamish
             }
         }
         #endregion
-
     }
 }

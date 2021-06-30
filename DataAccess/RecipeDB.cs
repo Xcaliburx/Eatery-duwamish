@@ -70,6 +70,7 @@ namespace DataAccess
                             recipe.RecipeID = Convert.ToInt32(Reader["RecipeID"]);
                             recipe.RecipeName = Convert.ToString(Reader["RecipeName"]);
                             recipe.RecipeDescription = Convert.ToString(Reader["RecipeDescription"]);
+                            recipe.DishID = Convert.ToInt32(Reader["DishID"]);
                         }
                     }
                     SqlConn.Close();

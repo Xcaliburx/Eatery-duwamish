@@ -22,6 +22,42 @@ namespace EateryDuwamish {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
+        
+        /// <summary>
+        /// Label4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label4;
+        
+        /// <summary>
+        /// Label5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label5;
+        
+        /// <summary>
         /// notifIngredient control.
         /// </summary>
         /// <remarks>
@@ -49,76 +85,76 @@ namespace EateryDuwamish {
         protected global::System.Web.UI.WebControls.Literal litFormType;
         
         /// <summary>
-        /// hdfDishId control.
+        /// hdfIngredientId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdfDishId;
+        protected global::System.Web.UI.WebControls.HiddenField hdfIngredientId;
         
         /// <summary>
-        /// txtDishName control.
+        /// txtIngredientName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDishName;
+        protected global::System.Web.UI.WebControls.TextBox txtIngredientName;
         
         /// <summary>
-        /// rfvDishName control.
+        /// rfvIngredientName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDishName;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvIngredientName;
         
         /// <summary>
-        /// revDishName control.
+        /// revIngredientName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revDishName;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revIngredientName;
         
         /// <summary>
-        /// ddlDishType control.
+        /// txtQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDishType;
+        protected global::System.Web.UI.WebControls.TextBox txtQuantity;
         
         /// <summary>
-        /// rfvDishType control.
+        /// rfvQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDishType;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvQuantity;
         
         /// <summary>
-        /// txtPrice control.
+        /// txtUnit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrice;
+        protected global::System.Web.UI.WebControls.TextBox txtUnit;
         
         /// <summary>
-        /// rfvPrive control.
+        /// rfvUnit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPrive;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUnit;
         
         /// <summary>
         /// btnSave control.
@@ -128,6 +164,15 @@ namespace EateryDuwamish {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSave;
+        
+        /// <summary>
+        /// lbRecipeName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbRecipeName;
         
         /// <summary>
         /// btnAdd control.
@@ -148,21 +193,57 @@ namespace EateryDuwamish {
         protected global::System.Web.UI.WebControls.Button btnDelete;
         
         /// <summary>
-        /// hdfDeletedDishes control.
+        /// hdfDeletedIngredients control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdfDeletedDishes;
+        protected global::System.Web.UI.WebControls.HiddenField hdfDeletedIngredients;
         
         /// <summary>
-        /// rptDish control.
+        /// rptIngredients control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptDish;
+        protected global::System.Web.UI.WebControls.Repeater rptIngredients;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// txtDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
+        
+        /// <summary>
+        /// btnEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEdit;
+        
+        /// <summary>
+        /// btnUpdateDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdateDescription;
     }
 }

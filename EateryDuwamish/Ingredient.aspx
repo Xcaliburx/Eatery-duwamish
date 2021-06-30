@@ -1,11 +1,65 @@
 ﻿<%@ Page Title="Ingredient" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Ingredient.aspx.cs" Inherits="EateryDuwamish.Ingredient" %>
 <%@ Register Src="~/UserControl/NotificationControl.ascx" TagName="NotificationControl" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+    <%--Datatable Configuration--%>
+    <script type="text/javascript">
+        function ConfigureDatatable() {
+            var table = null;
+            if ($.fn.dataTable.isDataTable('#htblIngredient')) {
+                table = $('#htblIngredient').DataTable();
+            }
+            else {
+                table = $('#htblIngredient').DataTable({
+                    stateSave: false,
+                    order: [[1, "asc"]],
+                    columnDefs: [{ orderable: false, targets: [0] }]
+                });
+            }
+            return table;
+        }
+    </script>
+    <%--Checkbox Event Configuration--%>
+    <script type="text/javascript">
+        function ConfigureCheckboxEvent() {
+            $('.checkDelete input').change(function () {
+                var parent = $(this).parent();
+                var value = $(parent).attr('data-value');
+                var deletedList = [];
 
+                if ($('#<%=hdfDeletedIngredients.ClientID%>').val())
+                    deletedList = $('#<%=hdfDeletedIngredients.ClientID%>').val().split(',');
+
+                if ($(this).is(':checked')) {
+                    deletedList.push(value);
+                    $('#<%=hdfDeletedIngredients.ClientID%>').val(deletedList.join(','));
+                }
+                else {
+                    var index = deletedList.indexOf(value);
+                    if (index >= 0)
+                        deletedList.splice(index, 1);
+                    $('#<%=hdfDeletedIngredients.ClientID%>').val(deletedList.join(','));
+                }
+            });
+        }
+    </script>
+    <%--Main Configuration--%>
+    <script type="text/javascript">
+        function ConfigureElements() {
+            ConfigureDatatable();
+            ConfigureCheckboxEvent();
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
+             <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
+             <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
+             <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
+             <asp:Label ID="Label5" runat="server" Text=""></asp:Label>
+
+
+
             <script type="text/javascript">
                 $(document).ready(function () {
                     ConfigureElements();
@@ -23,70 +77,69 @@
                 <div class="form-slip">
                     <div class="form-slip-header">
                         <div class="form-slip-title">
-                            FORM DISH - 
+                            FORM INGREDIENT - 
                             <asp:Literal runat="server" ID="litFormType"></asp:Literal>
                         </div>
                         <hr style="margin:0"/>
                     </div>
                     <div class="form-slip-main">
-                        <asp:HiddenField ID="hdfDishId" runat="server" Value="0"/>
+                        <asp:HiddenField ID="hdfIngredientId" runat="server" Value="0"/>
                         <div>
-                            <%--Dish Name Field--%>
+                            <%--Ingredient Name Field--%>
                             <div class="col-lg-6 form-group">
                                 <div class="col-lg-4 control-label">
-                                    Dish Name*
+                                    Ingredient*
                                 </div>
                                 <div class="col-lg-6">
-                                    <asp:TextBox ID="txtDishName" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtIngredientName" CssClass="form-control" runat="server"></asp:TextBox>
                                     <%--Validator--%>
-                                    <asp:RequiredFieldValidator ID="rfvDishName" runat="server" ErrorMessage="Please fill this field"
-                                        ControlToValidate="txtDishName" ForeColor="Red" 
-                                        ValidationGroup="InsertUpdateDish" Display="Dynamic">
+                                    <asp:RequiredFieldValidator ID="rfvIngredientName" runat="server" ErrorMessage="Please fill this field"
+                                        ControlToValidate="txtIngredientName" ForeColor="Red" 
+                                        ValidationGroup="InsertUpdateIngredient" Display="Dynamic">
                                     </asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="revDishName" runat="server" ErrorMessage="This field has a maximum of 100 characters"
-                                        ControlToValidate="txtDishName" ValidationExpression="^[\s\S]{0,100}$" ForeColor="Red"
-                                        ValidationGroup="InsertUpdateDish" Display="Dynamic">
+                                    <asp:RegularExpressionValidator ID="revIngredientName" runat="server" ErrorMessage="This field has a maximum of 100 characters"
+                                        ControlToValidate="txtIngredientName" ValidationExpression="^[\s\S]{0,100}$" ForeColor="Red"
+                                        ValidationGroup="InsertUpdateIngredient" Display="Dynamic">
                                     </asp:RegularExpressionValidator>
                                     <%--End of Validator--%>
                                 </div>
                             </div>
-                            <%--End of Dish Name Field--%>
-                            <%--Dish Type Field--%>
+                            <%--End of Ingredient Name Field--%>
+                            <%--Quantity Field--%>
                             <div class="col-lg-6 form-group">
                                 <div class="col-lg-4 control-label">
-                                    Dish Type*
+                                    Quantity*
                                 </div>
                                 <div class="col-lg-6">
-                                    <asp:DropDownList ID="ddlDishType" CssClass="form-control" runat="server"></asp:DropDownList>
+                                    <asp:TextBox ID="txtQuantity" CssClass="form-control" runat="server" type="number" 
+                                        Min="0" Max="9999999"></asp:TextBox>
                                     <%--Validator--%>
-                                    <asp:RequiredFieldValidator ID="rfvDishType" runat="server" ErrorMessage="Please fill this field"
-                                        ControlToValidate="ddlDishType" ForeColor="Red" InitialValue="0"
-                                        ValidationGroup="InsertUpdateDish" Display="Dynamic">
+                                    <asp:RequiredFieldValidator ID="rfvQuantity" runat="server" ErrorMessage="Please fill this field"
+                                        ControlToValidate="txtQuantity" ForeColor="Red" InitialValue="0"
+                                        ValidationGroup="InsertUpdateIngredient" Display="Dynamic">
                                     </asp:RequiredFieldValidator>
                                     <%--End of Validator--%>
                                 </div>
                             </div>
-                            <%--End of Dish Type Field--%>
-                            <%--Dish Price Field--%>
+                            <%--End of Quantity Field--%>
+                            <%--Unit Field--%>
                             <div class="col-lg-6 form-group">
                                 <div class="col-lg-4 control-label">
-                                    Price*
+                                    Unit*
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-price">
-                                        <div class="price-prefix">Rp. </div>
-                                        <asp:TextBox ID="txtPrice" CssClass="form-control" runat="server" type="number"
-                                             Min="0" Max="999999999"></asp:TextBox>
+                                        <asp:TextBox ID="txtUnit" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
                                     <%--Validator--%>
-                                    <asp:RequiredFieldValidator ID="rfvPrive" runat="server" ErrorMessage="Please fill this field"
-                                        ControlToValidate="txtPrice" ForeColor="Red"
-                                        ValidationGroup="InsertUpdateDish" Display="Dynamic">
+                                    <asp:RequiredFieldValidator ID="rfvUnit" runat="server" ErrorMessage="Please fill this field"
+                                        ControlToValidate="txtUnit" ForeColor="Red"
+                                        ValidationGroup="InsertUpdateIngredient" Display="Dynamic">
                                     </asp:RequiredFieldValidator>
                                     <%--End of Validator--%>
                                 </div>
                             </div>
-                            <%--End of Dish Type Field--%>
+                            <%--End of Unit Field--%>
                         </div>
                         <div class="col-lg-12">
                             <div class="col-lg-2">
@@ -100,12 +153,19 @@
                     </div>
                 </div>
             </asp:Panel>
-            <%--END OF FORM DISH--%>
+            <%--END OF FORM INGREDIENT--%>
+
+            <div class="row">
+                <div class="table-header">
+                    <asp:Label Font-Size="X-Large" ID="lbRecipeName" runat="server" Text=""></asp:Label>
+                </div>
+
+            </div>
 
             <div class="row">
                 <div class="table-header">
                     <div class="table-header-title">
-                        DISHES
+                        INGREDIENTS
                     </div>
                     <div class="table-header-button">
                         <asp:Button ID="btnAdd" runat="server" Text="ADD" CssClass="btn btn-primary" Width="100px"
@@ -117,10 +177,10 @@
             </div>
             <div class="row">
                 <div class="table-main col-sm-12">
-                    <asp:HiddenField ID="hdfDeletedDishes" runat="server" />
-                    <asp:Repeater ID="rptDish" runat="server" OnItemDataBound="rptDish_ItemDataBound" OnItemCommand="rptDish_ItemCommand">
+                    <asp:HiddenField ID="hdfDeletedIngredients" runat="server" />
+                    <asp:Repeater ID="rptIngredients" runat="server" OnItemDataBound="rptIngredients_ItemDataBound" OnItemCommand="rptIngredients_ItemCommand">
                         <HeaderTemplate>
-                            <table id="htblDish" class="table">
+                            <table id="htblIngredient" class="table">
                                 <thead>
                                     <tr role="row">
                                         <th aria-sort="ascending" style="" colspan="1" rowspan="1"
@@ -128,18 +188,15 @@
                                         </th>
                                         <th aria-sort="ascending" style="" colspan="1" rowspan="1" tabindex="0"
                                             class="sorting_asc text-center">
-                                            Dish Name
+                                            Ingredient
                                         </th>
                                         <th aria-sort="ascending" style="" colspan="1" rowspan="1" tabindex="0"
                                             class="sorting_asc text-center">
-                                            Dish Type
+                                            Quantity
                                         </th>
                                         <th aria-sort="ascending" style="" colspan="1" rowspan="1" tabindex="0"
                                             class="sorting_asc text-center">
-                                            Price
-                                        </th>
-                                        <th colspan="1" rowspan="1" tabindex="0">
-                                            Recipe
+                                            Unit
                                         </th>
                                     </tr>
                                 </thead>
@@ -154,18 +211,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <asp:LinkButton ID="lbDishName" runat="server" CommandName="EDIT"></asp:LinkButton>
+                                    <asp:LinkButton ID="lbIngredientName" runat="server" CommandName="EDIT"></asp:LinkButton>
                                 </td>
                                 <td>
-                                    <asp:Literal ID="litDishType" runat="server"></asp:Literal>
+                                    <asp:Literal ID="litQuantity" runat="server"></asp:Literal>
                                 </td>
                                 <td>
-                                    <asp:Literal ID="litPrice" runat="server"></asp:Literal>
-                                </td>
-                                <td>
-                                    <asp:Button ID="btnRecipe" UseSubmitBehavior="false" runat="server" OnClick="btnRecipe_Click" Text="Recipe" />
-                                </td>
-                                
+                                    <asp:Literal ID="litUnit" runat="server"></asp:Literal>
+                                </td>                          
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate>
@@ -175,6 +228,21 @@
                     </asp:Repeater>
                 </div>
             </div>
+
+            <div>
+                <asp:Label ID="Label1" runat="server" Text="Recipe Description"></asp:Label>
+                <br />
+                <asp:TextBox ID="txtDescription" Enabled="false" TextMode="MultiLine" Width="1470" Height="200" runat="server" style="resize: none"></asp:TextBox>
+                <div class="row">
+                    <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" />
+                    <asp:Button ID="btnUpdateDescription" OnClick="btnUpdateDescription_Click" runat="server" Text="Save" />
+                </div>
+                
+            </div>
+
+            <br />
+            <br />
+            <br />
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

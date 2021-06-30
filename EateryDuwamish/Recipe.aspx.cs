@@ -25,7 +25,7 @@ namespace EateryDuwamish
 
                 ShowNotificationIfExists();
                 setTitle(DishID);
-                LoadDishTable(DishID);
+                LoadRecipeTable(DishID);
             }
         }
         #region TITLE MANAGEMENT
@@ -69,7 +69,7 @@ namespace EateryDuwamish
         #endregion
 
         #region DATA TABLE MANAGEMENT
-        private void LoadDishTable(int dishID)
+        private void LoadRecipeTable(int dishID)
         {
             try
             {
